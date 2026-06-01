@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander'
+import generateDiff from '../src/index.js'
 
 const program = new Command()
 
@@ -11,8 +12,8 @@ program
 	.helpOption('-h, --help', 'display help for command')
 	.arguments('<filepath1> <filepath2>')
 	.option('-f, --format [type]', 'output format', 'stylish')
-	.action((filepath1, filepath2, options) => {
-		console.log(`Comparing ${filepath} and ${filepath2} with format: ${options.format}`)
+	.action((filePath1, filePath2) => {
+  		generateDiff(filePath1, filePath2)
 	})
 
 	program.parse(process.argv)

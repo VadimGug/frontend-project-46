@@ -10,9 +10,11 @@
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test-coverage": "jest --coverage",
+    "test": "jest",
+    "lint": "eslint ."
   },
   "dependencies": {
     "commander": "^15.0.0",
@@ -21,6 +23,14 @@
   },
   "jest": {
     "collectCoverage": true,
-    "coverageReporters": ["text", "lcov"]
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.32.0"
   }
 }

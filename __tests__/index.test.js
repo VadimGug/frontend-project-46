@@ -6,13 +6,15 @@ import genDiff from '../src/index.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename)
+const getFixturePath = (filename) => path.join(__dirname, '__fixtures__', filename)
+
+const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8')
 
 test('compare flat json files', () => {
   const path1 = getFixturePath('file1.json')
   const path2 = getFixturePath('file2.json')
 
-  const expected = '...'
+  const expected = readFile('expected_flat.txt')
 
-  expect(genDiff(path1, path2)).toEqual(expected)
+  expect(genDiff(path1, path2)).toEqual(expected.trim())
 })

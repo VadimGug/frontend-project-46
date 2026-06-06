@@ -6,15 +6,18 @@ import genDiff from '../src/index.js';
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const getFixturePath = (name) => path.join(dirname, 'fixtures', name);
+const getFixturePath = (name) => path.join(dirname, '__fixtures__', name);
 
-const readFile = (name) => readFileSync(getFixturePath(name), 'utf-8');
+const readFile = (name) => readFileSync(getFixturePath(name), 'utf-8').replace(/\r\n/g, '\n').trim();
 
-test('compare flat json files', () => {
-  const path1 = getFixturePath('file1.json');
-  const path2 = getFixturePath('file2.json');
+test('compare flat files (json & yaml)', () => {
+  const expected = readFile('expected_flat.txt').trim();
 
-  const expected = readFile('expected_flat.txt');
+  const jsonPath1 = getFixturePath('file1.json');
+  const jsonPath2 = getFixturePath('file2.json');
+  expect(genDiff(jsonPath1, jsonPath2).trim()).toEqual(expected);
 
-  expect(genDiff(path1, path2)).toEqual(expected.trim());
+  const yamlPath1 = getFixturePath('file1.yml');
+  const yamlPath2 = getFixturePath('file2.yaml');
+  expect(genDiff(yamlPath1, yamlPath2).trim()).toEqual(expected);
 });

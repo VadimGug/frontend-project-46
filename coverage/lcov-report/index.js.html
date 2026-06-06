@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/19</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>19/19</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -101,82 +101,100 @@
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
 <a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import _ from 'lodash'
-import fs from 'fs'
-import path from 'path'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import _ from 'lodash';
+import fs from 'fs';
+import path from 'path';
+import parse from './parsers.js';
+&nbsp;
+const getFormat = (filepath) =&gt; path.extname(filepath).slice(1).toLowerCase();
 &nbsp;
 const genDiff = (filePath1, filePath2) =&gt; {
-  const absolutePath1 = path.resolve(filePath1)
-  const absolutePath2 = path.resolve(filePath2)
+  const absolutePath1 = path.resolve(filePath1);
+  const absolutePath2 = path.resolve(filePath2);
 &nbsp;
-  const content1 = fs.readFileSync(absolutePath1, 'utf-8')
-  const content2 = fs.readFileSync(absolutePath2, 'utf-8')
+  const content1 = fs.readFileSync(absolutePath1, 'utf-8');
+  const content2 = fs.readFileSync(absolutePath2, 'utf-8');
 &nbsp;
-  const data1 = JSON.parse(content1)
-  const data2 = JSON.parse(content2)
+  const format1 = getFormat(absolutePath1);
+  const format2 = getFormat(absolutePath2);
 &nbsp;
-  const keys1 = Object.keys(data1)
-  const keys2 = Object.keys(data2)
-  const sortedKeys = _.sortBy(_.union(keys1, keys2))
+  const data1 = parse(content1, format1);
+  const data2 = parse(content2, format2);
+&nbsp;
+  const keys1 = Object.keys(data1);
+  const keys2 = Object.keys(data2);
+  const sortedKeys = _.sortBy(_.union(keys1, keys2));
 &nbsp;
   const lines = sortedKeys.flatMap((key) =&gt; {
     if (_.has(data1, key) &amp;&amp; !_.has(data2, key)) {
-      return `  - ${key}: ${data1[key]}`
+      return `  - ${key}: ${data1[key]}`;
     }
     if (!_.has(data1, key) &amp;&amp; _.has(data2, key)) {
-      return `  + ${key}: ${data2[key]}`
+      return `  + ${key}: ${data2[key]}`;
     }
     if (data1[key] !== data2[key]) {
       return [
         `  - ${key}: ${data1[key]}`,
         `  + ${key}: ${data2[key]}`,
-      ]
+      ];
     }
-    return `    ${key}: ${data1[key]}`
-  })
+    return `    ${key}: ${data1[key]}`;
+  });
 &nbsp;
-  return ['{', ...lines, '}'].join('\n')
-}
+  return ['{', ...lines, '}'].join('\n');
+};
 &nbsp;
-export default genDiff
+export default genDiff;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -184,7 +202,7 @@ export default genDiff
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-05T15:17:06.760Z
+                at 2026-06-06T19:54:27.629Z
             </div>
         <script src="prettify.js"></script>
         <script>

@@ -3,6 +3,8 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path from 'path';
 import parse from './parsers.js';
+import buildTree from './buildTree.js';
+import format from './formatters/index.js';
 
 const getFormat = (filepath) => path.extname(filepath).slice(1).toLowerCase();
 
@@ -23,7 +25,7 @@ const resolveFilePath = (filePath) => {
   return directPath;
 };
 
-const genDiff = (filePath1, filePath2) => {
+const genDiff = (filePath1, filePath2, formatName = 'stylish') => {
   const absolutePath1 = resolveFilePath(filePath1);
   const absolutePath2 = resolveFilePath(filePath2);
 
@@ -36,27 +38,9 @@ const genDiff = (filePath1, filePath2) => {
   const data1 = parse(content1, format1);
   const data2 = parse(content2, format2);
 
-  const keys1 = Object.keys(data1);
-  const keys2 = Object.keys(data2);
-  const sortedKeys = _.sortBy(_.union(keys1, keys2));
+  const tree = buildTree(data1, data2);
 
-  const lines = sortedKeys.flatMap((key) => {
-    if (_.has(data1, key) && !_.has(data2, key)) {
-      return `  - ${key}: ${data1[key]}`;
-    }
-    if (!_.has(data1, key) && _.has(data2, key)) {
-      return `  + ${key}: ${data2[key]}`;
-    }
-    if (data1[key] !== data2[key]) {
-      return [
-        `  - ${key}: ${data1[key]}`,
-        `  + ${key}: ${data2[key]}`,
-      ];
-    }
-    return `    ${key}: ${data1[key]}`;
-  });
-
-  return ['{', ...lines, '}'].join('\n');
+  return format(tree, formatName);
 };
 
 export default genDiff;

@@ -16,9 +16,7 @@ const stringify = (value, depth) => {
 
 const formatStylish = (tree) => {
   const iter = (node, depth) => {
-    // Базовый отступ для знаков + и - (на 2 пространства меньше основного уровня)
     const indent = ' '.repeat(depth * 4 - 2);
-    // Отступ для закрывающей скобки типа nested
     const bracketIndent = ' '.repeat(depth * 4);
 
     const lines = node.flatMap((item) => {

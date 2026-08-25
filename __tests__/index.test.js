@@ -33,3 +33,12 @@ test('compare nested files in plain format', () => {
   const yamlPath2 = getFixturePath('file2.yaml');
   expect(genDiff(yamlPath1, yamlPath2, 'plain').trim()).toEqual(expectedPlain);
 });
+
+test('compare nested files in json format', () => {
+  const jsonPath1 = getFixturePath('file1.json');
+  const jsonPath2 = getFixturePath('file2.json');
+
+  const result = genDiff(jsonPath1, jsonPath2, 'json');
+  expect(() => JSON.parse(result)).not.toThrow();
+  expect(Array.isArray(JSON.parse(result))).toBe(true);
+});

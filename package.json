@@ -10,9 +10,9 @@
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test-coverage": "jest --coverage",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test-coverage": "vitest run --coverage",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -29,8 +29,10 @@
     ]
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.11",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.32.0"
+    "eslint-plugin-import": "^2.32.0",
+    "vitest": "^4.1.11"
   }
 }

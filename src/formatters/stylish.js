@@ -8,7 +8,7 @@ const stringify = (value, depth) => {
   const indent = ' '.repeat(depth * 4);
   const bracketIndent = ' '.repeat(depth * 4);
   const lines = Object.entries(value).map(
-    ([key, val]) => `${indent}    ${key}: ${stringify(val, depth + 1)}`
+    ([key, val]) => `${indent}    ${key}: ${stringify(val, depth + 1)}`,
   );
 
   return ['{', ...lines, `${bracketIndent}}`].join('\n');

@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path from 'path';
@@ -8,8 +7,10 @@ import format from './formatters/index.js';
 
 const getFormat = (filepath) => path.extname(filepath).slice(1).toLowerCase();
 
+/* eslint-disable no-underscore-dangle */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+/* eslint-enable no-underscore-dangle */
 
 const resolveFilePath = (filePath) => {
   const directPath = path.resolve(filePath);

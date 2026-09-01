@@ -5,8 +5,8 @@
 
 Возможности утилиты:
 
--Поддержка разных входных форматов: YAML, JSON
--Генерация отчёта в форматах plain text, stylish и JSON
+**Поддержка разных входных форматов: YAML, JSON**
+**Генерация отчёта в форматах plain text, stylish и JSON**
 
 ---
 
@@ -21,11 +21,17 @@
 
 [![asciicast](https://asciinema.org/a/NU3fhyHzoRDGNt8l.svg)](https://asciinema.org/a/NU3fhyHzoRDGNt8l)
 
+---
+
 ### Рекурсивное сравнение вложенных структур (В формате Stylish)
 [![asciicast](https://asciinema.org/a/H56VVyFzMoJSKuxU.svg)](https://asciinema.org/a/H56VVyFzMoJSKuxU)
 
+---
+
 ### Вывод различий во внешнем плоском формате (В формате Plain)
 [![asciicast](https://asciinema.org/a/2Fy90VIM86oSVVCw.svg)](https://asciinema.org/a/2Fy90VIM86oSVVCw)
+
+---
 
 ### Вывод различий в структурированном виде (В формате JSON)
 [![asciicast](https://asciinema.org/a/16XJVg7EOZAfEkNB.svg)](https://asciinema.org/a/16XJVg7EOZAfEkNB)
